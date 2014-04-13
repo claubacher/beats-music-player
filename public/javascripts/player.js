@@ -1,3 +1,8 @@
+var app = {
+  beatsBaseUrl: 'https://partner.api.beatsmusic.com/v1/api/',
+  clientId: 'rwrwapvr4jng2jvp6aeem5wa'
+};
+
 $(function() {
   soundManager.setup({
     url: '/vendor/SM2/swf/',
@@ -5,72 +10,78 @@ $(function() {
     preferFlash: true
   });
 
-  var beatsBaseUrl = 'https://partner.api.beatsmusic.com/v1/api/'
-    , clientId = 'rwrwapvr4jng2jvp6aeem5wa'
-    , featured = [];
+    // , featured = [];
 
-  var getFeatured = function(res) {
-    var $list = $('.featured');
+  // var getFeatured = function(res) {
+  //   var $list = $('.featured');
 
-    res.data.forEach(function(item) {
-      featured.push(item);
+  //   res.data.forEach(function(item) {
+  //     featured.push(item);
 
-      var $li = $('<li>');
-      var $img = $('<img>').attr('src', beatsBaseUrl + item.content.type + 's/' + item.content.id + '/images/default?size=small&client_id=' + clientId); 
+  //     var $li = $('<li>');
+  //     var $img = $('<img>').attr('src', beatsBaseUrl + item.content.type + 's/' + item.content.id + '/images/default?size=small&client_id=' + clientId); 
 
-      $list.append( $li.append($img) );
-    });
-  }
+  //     $list.append( $li.append($img) );
+  //   });
+  // }
+  var featuredUrl = app.beatsBaseUrl + 'discoveries/featured?client_id=' + app.clientId;
+  var editorPicksUrl = app.beatsBaseUrl + 'discoveries/editor_picks?client_id=' + app.clientId;
 
-  $.getJSON(beatsBaseUrl + 'discoveries/featured?client_id=' + clientId, function(res) {
-    getFeatured(res);
+  var featuredPlaylists = new FeaturedPlaylists([ featuredUrl, editorPicksUrl ]);
 
-    var defaultPlaylist = featured[0].content;
+  // $.getJSON(, function(res) {
+    // res.data.forEach(function(data) {
+      // var playlist = new Playlist(data);
+      
+  //   getFeatured(res);
 
-    var name = defaultPlaylist.name ? defaultPlaylist.name : defaultPlaylist.title; 
+  //   var defaultPlaylist = featured[0].content;
 
-    $('.playlist-name').text(name);
+  //   var name = defaultPlaylist.name ? defaultPlaylist.name : defaultPlaylist.title; 
 
-    defaultPlaylist.refs.tracks.forEach(function(track) {
-      $('.playlist').append($('<li>' + track.display + '</li>'));
-    });
+  //   $('.playlist-name').text(name);
 
-    var defaultTrack = defaultPlaylist.refs.tracks[0];
+  //   defaultPlaylist.refs.tracks.forEach(function(track) {
+  //     $('.playlist').append($('<li>' + track.display + '</li>'));
+  //   });
 
-    var url = beatsBaseUrl + 'tracks/' + 
-      defaultTrack.id + '/' +
-      'audio?' +
-      'acquire=1' +
-      '&access_token=' + accessToken;
+  //   var defaultTrack = defaultPlaylist.refs.tracks[0];
 
-    $('.track-name').text(defaultTrack.display)
+  //   var url = beatsBaseUrl + 'tracks/' + 
+  //     defaultTrack.id + '/' +
+  //     'audio?' +
+  //     'acquire=1' +
+  //     '&access_token=' + accessToken;
 
-    $.get(beatsBaseUrl + 'tracks/' + defaultTrack.id + '/artists?client_id=' + clientId, function(res) {
-      $('.artist-name').text(res.data[0].name);
-    });
+  //   $('.track-name').text(defaultTrack.display)
 
-    soundManager.onready(function() {
-      var playing = false;
+  //   $.get(beatsBaseUrl + 'tracks/' + defaultTrack.id + '/artists?client_id=' + clientId, function(res) {
+  //     $('.artist-name').text(res.data[0].name);
+  //   });
 
-      $.getJSON(url, function(res) {
-        var sound = soundManager.createSound({
-          url: res.data.resource,
-          serverURL: res.data.location
-        });
+  //   soundManager.onready(function() {
+  //     var playing = false;
 
-        $('.play-pause').on('click', function() {
-          if (playing) {
-            sound.pause();
-            playing = false;
-          } else {
-            sound.play();
-            playing = true;
-          }
-          $(this).children().toggleClass('active');
-        });
-      });
-    });
-  });
+  //     $.getJSON(url, function(res) {
+  //       var sound = soundManager.createSound({
+  //         url: res.data.resource,
+  //         serverURL: res.data.location
+  //       });
 
-  $.getJSON(beatsBaseUrl + 'discoveries/editor_picks?client_id=' + clientId, getFeatured);
+  //       $('.play-pause').on('click', function() {
+  //         if (playing) {
+  //           sound.pause();
+  //           playing = false;
+  //         } else {
+  //           sound.play();
+  //           playing = true;
+  //         }
+
+  //         $(this).children().toggleClass('active');
+  //       });
+  //     });
+  //   });
+  // });
+
+  // $.getJSON(, getFeatured);
 });
