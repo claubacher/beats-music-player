@@ -1,4 +1,4 @@
-var FeaturedPlaylists = Backbone.View.extend({
+var FeaturedPlaylistsView = Backbone.View.extend({
   el: '.featured',
 
   playlists: [],
@@ -6,8 +6,9 @@ var FeaturedPlaylists = Backbone.View.extend({
   initialize: function(urls) {
     urls.forEach(function(url, urlIdx, urls) {
       $.getJSON(url, function(res) {
-        res.data.forEach(function(item, itemIdx, data) {
-          this.playlists.push( new Playlist(item) );
+        res.data.forEach(function(dataItem, itemIdx, data) {
+          var playlist = new Playlist(dataItem);
+          this.playlists.push(playlist);
           if (urlIdx === urls.length - 1 && itemIdx === data.length - 1) {
             this.render();
           }

@@ -10,24 +10,17 @@ $(function() {
     preferFlash: true
   });
 
-    // , featured = [];
-
-  // var getFeatured = function(res) {
-  //   var $list = $('.featured');
-
-  //   res.data.forEach(function(item) {
-  //     featured.push(item);
-
-  //     var $li = $('<li>');
-  //     var $img = $('<img>').attr('src', beatsBaseUrl + item.content.type + 's/' + item.content.id + '/images/default?size=small&client_id=' + clientId); 
-
-  //     $list.append( $li.append($img) );
-  //   });
-  // }
   var featuredUrl = app.beatsBaseUrl + 'discoveries/featured?client_id=' + app.clientId;
   var editorPicksUrl = app.beatsBaseUrl + 'discoveries/editor_picks?client_id=' + app.clientId;
 
-  var featuredPlaylists = new FeaturedPlaylists([ featuredUrl, editorPicksUrl ]);
+  var featuredPlaylists = new FeaturedPlaylistsView([ featuredUrl, editorPicksUrl ]);
+  var playlistView = new PlaylistView();
+  // var player = new Player();
+
+  app.loadPlaylist = function(playlist) {
+    // console.dir(playlist);
+    playlistView.loadPlaylist(playlist);
+  };
 
   // $.getJSON(, function(res) {
     // res.data.forEach(function(data) {
