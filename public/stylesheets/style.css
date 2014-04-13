@@ -23,6 +23,7 @@ body {
 
 .playlist-container {
   border: 1px solid #FF0078;
+  overflow-y: auto;
 }
 
 .controls-container {
@@ -74,4 +75,14 @@ i {
 
 .volume-controls {
   width: 215px;
+}
+
+.featured {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.featured li {
+  display: inline-block;
 }
