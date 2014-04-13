@@ -1,7 +1,32 @@
 extends layout
 
 block content
-  h1 Now Playing
+  .featured-container
+    h1 Featured Playlists
+    ul.featured
+
+  .playlist-container
+    ol.playlist
+
+  .controls-container
+    .play-pause
+      i.fa.fa-play.center.active
+      i.fa.fa-pause.center
+    .skip-backward
+      i.fa.fa-backward.center
+    .skip-forward
+      i.fa.fa-forward.center
+    .track-info-container
+      .track-info.center
+        span.track-name Foobarbaz
+        span  by 
+        span.artist-name Quux
+    .volume-container
+      .volume-controls.center
+        i.fa.fa-volume-off
+        input(type="range")
+        i.fa.fa-volume-up
+
   script(src='//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js')
   script(src='vendor/SM2/script/soundmanager2-jsmin.js')
   script window.accessToken = '#{accessToken}'

@@ -1,8 +1,77 @@
-body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+html {
+  height: 100%;
 }
 
-a {
-  color: #00B7FF;
+body {
+  height: 100%;
+  margin: 0;
+  font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; 
+  font-weight: 300;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.featured-container, .playlist-container {
+  float: left;
+  width: 50%;
+  height: calc(100% - 80px);
+  padding-left: 2%;
+  padding-right: 2%;
+}
+
+.playlist-container {
+  border: 1px solid #FF0078;
+}
+
+.controls-container {
+  clear: both;
+  height: 80px;
+  border: 1px solid #FF0078;
+  font-size: 24px;
+}
+
+.controls-container > div {
+  float: left;
+  height: 100%;
+  position: relative;
+  border: 1px solid #FF0078;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+}
+
+i {
+  padding-left: 12px;
+  padding-right: 12px;
+}
+
+.play-pause i {
+  display: none;
+}
+
+.play-pause .active {
+  display: inline-block;
+}
+
+.play-pause, .skip-backward, .skip-forward {
+  width: 5%;
+}
+
+.track-info-container {
+  width: 65%;
+  position: relative;
+}
+
+.volume-container {
+  width: 20%;
+}
+
+.volume-controls {
+  width: 215px;
 }
