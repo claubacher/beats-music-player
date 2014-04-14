@@ -9,6 +9,7 @@ var PlaylistView = Backbone.View.extend({
 
   initialize: function(defaultPlaylist) {
     app.currentPlaylist = defaultPlaylist;
+    app.currentTrack = defaultPlaylist.tracks[0];
     this.render();
   },
 
@@ -24,13 +25,16 @@ var PlaylistView = Backbone.View.extend({
     $('.playlist-name').text(app.currentPlaylist.name);
 
     app.currentPlaylist.tracks.forEach(function(track, idx) {
-      this.$el.append( $('<li>').text(track.name).data('index', idx) );
+      var $li = $('<li>').text(track.name).data('index', idx);
+      if (track === app.currentTrack) $li.addClass('active');
+      this.$el.append($li);
     }, this);
   },
 
   playTrack: function(e) {
     var idx = $(e.target).data('index');
     app.player.playTrack(idx);
+    this.render();
   },
 
   loadPlaylist: function(playlist) {

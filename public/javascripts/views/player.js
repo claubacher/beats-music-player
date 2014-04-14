@@ -90,6 +90,7 @@ var Player = Backbone.View.extend({
   },
 
   playTrack: function(idx) {
+    // TODO: IF APP.PLAYING
     this.sound.destruct();
     this.togglePlaying();
     app.currentTrack = app.currentPlaylist.tracks[idx];

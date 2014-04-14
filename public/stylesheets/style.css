@@ -107,6 +107,10 @@ i {
   padding: 8px;
 }
 
+.playlist .active {
+  color: #FF0078;
+}
+
 .playlist li:before {
   content: counter(counter, decimal-leading-zero);
   counter-increment: counter;
