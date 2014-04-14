@@ -10,13 +10,13 @@ body {
 }
 
 * {
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
 .featured-container, .playlist-container {
   float: left;
   height: calc(100% - 80px);
-  width: 50%;
   padding-left: 2%;
   padding-right: 2%;
   overflow-y: auto;
