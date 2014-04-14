@@ -95,6 +95,13 @@ i {
 
 .track-info {
   text-align: center;
+  width: 100%;
+}
+
+.truncate {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .playlist {
