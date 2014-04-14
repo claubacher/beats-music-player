@@ -97,6 +97,23 @@ i {
   text-align: center;
 }
 
+.playlist {
+  list-style: none;
+  padding: 0;
+  counter-reset: counter;
+}
+
 .playlist li {
-  margin: 8px 0;
+  padding: 8px;
+}
+
+.playlist li:before {
+  content: counter(counter, decimal-leading-zero);
+  counter-increment: counter;
+  margin-right: 1em;
+}
+
+.playlist li:hover {
+  background: #ccc;
+  cursor: pointer;
 }

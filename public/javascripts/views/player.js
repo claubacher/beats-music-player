@@ -27,7 +27,7 @@ var Player = Backbone.View.extend({
       this.sound = soundManager.createSound({
         url: res.data.resource,
         serverURL: res.data.location,
-        // autoPlay: true
+        autoPlay: true
       });
 
       if (app.volume) this.sound.setVolume(app.volume);
@@ -91,5 +91,12 @@ var Player = Backbone.View.extend({
       this.sound.setVolume(newVolume);
     }
     app.volume = newVolume;
+  },
+
+  playTrack: function(idx) {
+    this.sound.destruct();
+    this.togglePlaying();
+    app.currentTrack = app.currentPlaylist.tracks[idx];
+    this.render();
   }
 });
