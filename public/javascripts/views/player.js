@@ -29,6 +29,8 @@ var Player = Backbone.View.extend({
         serverURL: res.data.location,
         autoPlay: true
       });
+
+      if (app.volume) this.sound.setVolume(app.volume);
     }.bind(this));
 
     this.togglePlaying();
@@ -81,5 +83,13 @@ var Player = Backbone.View.extend({
     } else {
       this.stop();
     }
+  },
+
+  changeVolume: function(e) {
+    var newVolume = Number(e.target.value);
+    if (this.sound) {
+      this.sound.setVolume(newVolume);
+    }
+    app.volume = newVolume;
   }
 });
