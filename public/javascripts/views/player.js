@@ -11,6 +11,11 @@ var Player = Backbone.View.extend({
     'change .volume': 'changeVolume'
   },
 
+  initialize: function(defaultTrack) {
+    app.currentTrack = defaultTrack;
+    this.render();
+  },
+
   render: function() {
     $.get(app.beatsBaseUrl + 'tracks/' + app.currentTrack.id + '/artists?client_id=' + app.clientId, function(res) {
       $('.track-name').text(app.currentTrack.name);
@@ -26,14 +31,11 @@ var Player = Backbone.View.extend({
     $.getJSON(url, function(res) {
       this.sound = soundManager.createSound({
         url: res.data.resource,
-        serverURL: res.data.location,
-        autoPlay: true
+        serverURL: res.data.location
       });
 
       if (app.volume) this.sound.setVolume(app.volume);
     }.bind(this));
-
-    this.togglePlaying();
   },
 
   togglePlaying: function() {

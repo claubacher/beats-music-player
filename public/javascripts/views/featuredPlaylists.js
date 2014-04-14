@@ -10,6 +10,8 @@ var FeaturedPlaylistsView = Backbone.View.extend({
           var playlist = new Playlist(dataItem);
           this.playlists.push(playlist);
           if (urlIdx === urls.length - 1 && itemIdx === data.length - 1) {
+            app.playlistView = new PlaylistView(this.playlists[0]);
+            app.player = new Player(this.playlists[0].tracks[0]);
             this.render();
           }
         }, this);

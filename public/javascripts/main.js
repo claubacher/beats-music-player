@@ -10,7 +10,5 @@ $(function() {
     var editorPicksUrl = app.beatsBaseUrl + 'discoveries/editor_picks?client_id=' + app.clientId;
 
     app.featuredPlaylistsView = new FeaturedPlaylistsView([ featuredUrl, editorPicksUrl ]);
-    app.playlistView = new PlaylistView();
-    app.player = new Player();
   });
 });

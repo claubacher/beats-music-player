@@ -7,6 +7,11 @@ var PlaylistView = Backbone.View.extend({
     'click li': 'playTrack'
   },
 
+  initialize: function(defaultPlaylist) {
+    app.currentPlaylist = defaultPlaylist;
+    this.render();
+  },
+
   render: function() {
     this.$el.empty();
 
