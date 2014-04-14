@@ -86,3 +86,7 @@ i {
 .featured li {
   display: inline-block;
 }
+
+.track-info {
+  text-align: center;
+}
