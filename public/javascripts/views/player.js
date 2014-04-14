@@ -66,6 +66,7 @@ var Player = Backbone.View.extend({
       this.sound.destruct();
       app.currentTrack = app.currentPlaylist.tracks[currentIdx - 1];
       this.render();
+      app.playlistView.render();
     } else {
       this.stop();
     }
@@ -77,6 +78,7 @@ var Player = Backbone.View.extend({
       this.sound.destruct();
       app.currentTrack = app.currentPlaylist.tracks[currentIdx + 1];
       this.render();
+      app.playlistView.render();
     } else {
       this.stop();
     }
