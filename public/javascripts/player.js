@@ -13,13 +13,17 @@ $(function() {
   var featuredUrl = app.beatsBaseUrl + 'discoveries/featured?client_id=' + app.clientId;
   var editorPicksUrl = app.beatsBaseUrl + 'discoveries/editor_picks?client_id=' + app.clientId;
 
-  var featuredPlaylists = new FeaturedPlaylistsView([ featuredUrl, editorPicksUrl ]);
+  var featuredPlaylistsView = new FeaturedPlaylistsView([ featuredUrl, editorPicksUrl ]);
   var playlistView = new PlaylistView();
-  // var player = new Player();
+  var player = new Player();
 
   app.loadPlaylist = function(playlist) {
     // console.dir(playlist);
-    playlistView.loadPlaylist(playlist);
+    // playlistView.loadPlaylist(playlist);
+    app.currentPlaylist = playlist;
+    app.currentTrack = playlist.tracks[0];
+    playlistView.render();
+    player.render();
   };
 
   // $.getJSON(, function(res) {
