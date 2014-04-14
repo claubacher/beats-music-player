@@ -31,7 +31,8 @@ var Player = Backbone.View.extend({
     $.getJSON(url, function(res) {
       this.sound = soundManager.createSound({
         url: res.data.resource,
-        serverURL: res.data.location
+        serverURL: res.data.location,
+        volume: 50
       });
 
       if (app.volume) this.sound.setVolume(app.volume);
