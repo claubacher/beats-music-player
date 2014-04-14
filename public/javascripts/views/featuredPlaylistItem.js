@@ -3,6 +3,8 @@ var app = app || {};
 var FeaturedPlaylistItem = Backbone.View.extend({
   tagName: 'li',
 
+  className: 'clickable',
+
   events: {
     'click img': 'loadPlaylist'
   },

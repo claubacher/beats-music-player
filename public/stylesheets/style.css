@@ -68,6 +68,10 @@ i {
   width: 5%;
 }
 
+.clickable {
+  cursor: pointer;
+}
+
 .track-info-container {
   width: 65%;
   position: relative;
@@ -91,6 +95,10 @@ i {
 .featured li {
   display: inline-block;
   margin: 2px;
+}
+
+.featured .active {
+  border: 1px solid #FF0078;
 }
 
 .track-info {
