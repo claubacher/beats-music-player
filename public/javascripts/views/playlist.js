@@ -15,6 +15,12 @@ var PlaylistView = Backbone.View.extend({
   render: function() {
     this.$el.empty();
 
+    // hack to force redraw on Chrome/MacOSX
+    // http://stackoverflow.com/questions/3485365/how-can-i-force-webkit-to-redraw-repaint-to-propagate-style-changes?lq=1
+    this.el.style.display = 'none';
+    this.el.offsetHeight;
+    this.el.style.display = 'block';
+
     $('.playlist-name').text(app.currentPlaylist.name);
 
     app.currentPlaylist.tracks.forEach(function(track, idx) {
@@ -25,5 +31,10 @@ var PlaylistView = Backbone.View.extend({
   playTrack: function(e) {
     var idx = $(e.target).data('index');
     app.player.playTrack(idx);
+  },
+
+  loadPlaylist: function(playlist) {
+    app.currentPlaylist = playlist;
+    this.render();
   }
 });

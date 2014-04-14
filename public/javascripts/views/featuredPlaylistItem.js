@@ -17,11 +17,6 @@ var FeaturedPlaylistItem = Backbone.View.extend({
   },
 
   loadPlaylist: function() {
-    app.currentPlaylist = this.playlist;
-    app.currentTrack = this.playlist.tracks[0];
-    app.playlistView.render();
-    if (!app.playing) {
-      app.player.render();
-    }
+    app.playlistView.loadPlaylist(this.playlist);
   }
 });
