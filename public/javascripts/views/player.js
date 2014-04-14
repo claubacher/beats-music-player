@@ -35,16 +35,12 @@ var Player = Backbone.View.extend({
       });
 
       if (app.volume) this.sound.setVolume(app.volume);
+      if (app.playing) this.sound.play();
     }.bind(this));
   },
 
   togglePlaying: function() {
-    if (app.playing) {
-      app.playing = false;
-    } else {
-      app.playing = true;
-    }
-
+    app.playing = !app.playing;
     this.$el.find('.play-pause').children().toggleClass('active');
   },
 
@@ -67,7 +63,6 @@ var Player = Backbone.View.extend({
     var currentIdx = app.currentPlaylist.tracks.indexOf(app.currentTrack);
     if (currentIdx > 0) {
       this.sound.destruct();
-      this.togglePlaying();
       app.currentTrack = app.currentPlaylist.tracks[currentIdx - 1];
       this.render();
     } else {
@@ -79,7 +74,6 @@ var Player = Backbone.View.extend({
     var currentIdx = app.currentPlaylist.tracks.indexOf(app.currentTrack);
     if (currentIdx < app.currentPlaylist.tracks.length - 1) {
       this.sound.destruct();
-      this.togglePlaying();
       app.currentTrack = app.currentPlaylist.tracks[currentIdx + 1];
       this.render();
     } else {
