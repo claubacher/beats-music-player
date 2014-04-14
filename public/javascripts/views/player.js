@@ -2,7 +2,7 @@ var app = app || {};
 
 var Player = Backbone.View.extend({
 
-  el: '.controls-container',
+  el: '.player-container',
 
   events: {
     'click .play-pause': 'playPause',
@@ -27,7 +27,7 @@ var Player = Backbone.View.extend({
       this.sound = soundManager.createSound({
         url: res.data.resource,
         serverURL: res.data.location,
-        autoPlay: true
+        // autoPlay: true
       });
 
       if (app.volume) this.sound.setVolume(app.volume);

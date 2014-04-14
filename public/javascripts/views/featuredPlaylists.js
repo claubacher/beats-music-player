@@ -19,7 +19,7 @@ var FeaturedPlaylistsView = Backbone.View.extend({
 
   render: function() {
     this.playlists.forEach(function(playlist) {
-      var featuredPlaylistItem = new FeaturedPlaylistItem(playlist);
+      var featuredPlaylistItem = new FeaturedPlaylistItem({ playlist: playlist });
       this.$el.append( featuredPlaylistItem.$el );
     }, this);
   }

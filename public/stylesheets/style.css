@@ -15,29 +15,33 @@ body {
 
 .featured-container, .playlist-container {
   float: left;
-  width: 50%;
   height: calc(100% - 80px);
+  width: 50%;
   padding-left: 2%;
   padding-right: 2%;
-}
-
-.playlist-container {
-  border: 1px solid #FF0078;
   overflow-y: auto;
 }
 
-.controls-container {
+.featured-container {
+  width: 45%;
+  float: right;
+}
+
+.playlist-container {
+  width: 55%;
+}
+
+.player-container {
   clear: both;
   height: 80px;
-  border: 1px solid #FF0078;
+  border-top: 1px solid #FF0078;
   font-size: 24px;
 }
 
-.controls-container > div {
+.player-container > div {
   float: left;
   height: 100%;
   position: relative;
-  border: 1px solid #FF0078;
 }
 
 .center {
@@ -81,12 +85,18 @@ i {
   list-style-type: none;
   margin: 0;
   padding: 0;
+  font-size: 0;
 }
 
 .featured li {
   display: inline-block;
+  margin: 2px;
 }
 
 .track-info {
   text-align: center;
+}
+
+.playlist li {
+  margin: 8px 0;
 }

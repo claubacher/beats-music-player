@@ -7,9 +7,8 @@ var FeaturedPlaylistItem = Backbone.View.extend({
     'click img': 'loadPlaylist'
   },
 
-  initialize: function(playlist) {
-    // console.dir(playlist);
-    this.playlist = playlist;
+  initialize: function(attrs) {
+    this.playlist = attrs.playlist;
     this.render();
   },
 
@@ -18,7 +17,11 @@ var FeaturedPlaylistItem = Backbone.View.extend({
   },
 
   loadPlaylist: function() {
-    // console.dir(this.playlist);
-    app.loadPlaylist(this.playlist);
+    app.currentPlaylist = this.playlist;
+    app.currentTrack = this.playlist.tracks[0];
+    app.playlistView.render();
+    if (!app.playing) {
+      app.player.render();
+    }
   }
 });
