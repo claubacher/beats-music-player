@@ -11,3 +11,4 @@ TODO:
 - Scrubber for current position in playing track
 - Highlight currently playing playlist
 - Mouseover animation for featured playlists (maybe)
+- Improve login user flow
