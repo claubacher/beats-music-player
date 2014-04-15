@@ -28,11 +28,14 @@ var Player = Backbone.View.extend({
   getAudio: function() {
     var url = app.beatsBaseUrl + 'tracks/' + app.currentTrack.id + '/' + 'audio?' + 'acquire=1' + '&access_token=' + app.accessToken;
 
+    var onfinish = this.skipForward.bind(this);
+
     $.getJSON(url, function(res) {
       this.sound = soundManager.createSound({
         url: res.data.resource,
         serverURL: res.data.location,
-        volume: 50
+        volume: 50,
+        onfinish: onfinish
       });
 
       if (app.volume) this.sound.setVolume(app.volume);
